@@ -1,0 +1,44 @@
+[19-Jan-2021 15:01:15 America/Managua] PHP Notice:  Undefined variable: con in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:01:15 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:01:15 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:01:15 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:81
+[19-Jan-2021 15:01:15 America/Managua] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\wamp64\www\tnd\api\notification_api.php:65
+Stack trace:
+#0 C:\wamp64\www\tnd\api\notification_api.php(81): OneSignal->sendMessage('Highcharts Demo', Array, '', 'en')
+#1 {main}
+  thrown in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:01:23 America/Managua] PHP Notice:  Undefined variable: con in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:01:23 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:01:23 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:01:23 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:81
+[19-Jan-2021 15:01:23 America/Managua] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\wamp64\www\tnd\api\notification_api.php:65
+Stack trace:
+#0 C:\wamp64\www\tnd\api\notification_api.php(81): OneSignal->sendMessage('hhh', Array, '', 'en')
+#1 {main}
+  thrown in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:02:36 America/Managua] PHP Notice:  Undefined variable: con in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:02:36 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:02:36 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:02:36 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:84
+[19-Jan-2021 15:02:36 America/Managua] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\wamp64\www\tnd\api\notification_api.php:65
+Stack trace:
+#0 C:\wamp64\www\tnd\api\notification_api.php(84): OneSignal->sendMessage('g', Array, '', 'en')
+#1 {main}
+  thrown in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:02:49 America/Managua] PHP Notice:  Array to string conversion in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:02:49 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:02:49 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:02:49 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:84
+[19-Jan-2021 15:03:22 America/Managua] PHP Notice:  Undefined variable: con in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:03:22 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:03:22 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:03:22 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:84
+[19-Jan-2021 15:03:22 America/Managua] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\wamp64\www\tnd\api\notification_api.php:65
+Stack trace:
+#0 C:\wamp64\www\tnd\api\notification_api.php(84): OneSignal->sendMessage('g', Array, '', 'en')
+#1 {main}
+  thrown in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:03:51 America/Managua] PHP Notice:  Array to string conversion in C:\wamp64\www\tnd\api\notification_api.php on line 65
+[19-Jan-2021 15:03:51 America/Managua] PHP Stack trace:
+[19-Jan-2021 15:03:51 America/Managua] PHP   1. {main}() C:\wamp64\www\tnd\api\notification_api.php:0
+[19-Jan-2021 15:03:51 America/Managua] PHP   2. OneSignal->sendMessage() C:\wamp64\www\tnd\api\notification_api.php:84
