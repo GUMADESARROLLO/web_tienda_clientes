@@ -27,7 +27,7 @@
 				   <div class="row" matchheight="card">
     
     
-    <div class="col-xl-3 col-lg-6 col-12">
+    <div class="col-xl-3 col-lg-6 col-12" style="display: none">
       <div class="card">
         <div class="card-content">
           <div class="px-3 py-3">
@@ -80,7 +80,7 @@
       </div>
     </div>
     
-     <div class="col-xl-3 col-lg-6 col-12">
+     <div class="col-xl-3 col-lg-6 col-12" style="display: none">
       <div class="card">
         <div class="card-content">
           <div class="px-3 py-3">
@@ -99,7 +99,7 @@
     </div>
     
     
-     <div class="col-xl-3 col-lg-6 col-12" >
+     <div class="col-xl-3 col-lg-6 col-12" style="display: none">
       <div class="card">
         <div class="card-content">
           <div class="px-3 py-3">

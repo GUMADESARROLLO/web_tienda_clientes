@@ -29,48 +29,31 @@
                         <table class="table table-striped" id="example">
                             <thead>
                                 <tr>
-								 <th>Sr No.</th>
-                                    <th>Date</th>
-                                     <th>Order ID</th>
-									 <th>Customer Sign</th>
-                                     <th>Status</th>
-                                     <th>Preview</th>
-                                
+                                    <th>Order ID</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Nombre</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                $sel = $con->query("select * from orders where status ='completed' order by id desc");
-                                $i=0;
+                                <?php
+                                $sel = $con->query("SELECT T0.id,T0.order_date,T1.cod_client,T1.name,T0.status,T0.p_method,T0.player_id FROM orders T0 INNER JOIN USER T1 ON T0.uid = T1.id WHERE T0.STATUS = 'completado ' ORDER BY T0.id DESC");
+
                                 while($row = $sel->fetch_assoc())
                                 {
-                                    
-                                    $i = $i + 1;
+
+                                    $pid=  substr("00000000", strlen($row['id'])).$row['id'];
                                 ?>
                                 <tr>
 
-                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $pid; ?></td>
                                     <td><?php echo $row['order_date'];?></td>
-                                    <td><?php echo $row['id'];?></td>
-                                   <td><?php 
-                   if($row['photo'] == '')
-                   {
-                     ?>
-                     <p>Order Pickup By Customer</p>
-                     <?php 
-                   }
-                   else 
-                   {
-                   ?>
-                   <img src="<?php echo 'data:image/jpeg;base64,'.$row['photo'];?>" width="100" height="100">
-                   <?php } ?>
-                   </td>
+                                    <td><?php echo $row['cod_client'];?></td>
+                                    <td><?php echo $row['name'];?></td>
                                     <td><?php echo ucfirst($row['status']);?></td>
-                                    								   <td>
-								  <button class="preview_d shadow-z-2 btn btn-primary" data-id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModal">Preview</button></td>
-								  
-								  
-                                   
+                                    <td><button class="preview_d shadow-z-2 btn btn-primary" data-id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModal">Preview</button></td>
                                 </tr>
                                <?php  }?>
                             </tbody>

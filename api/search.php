@@ -2,7 +2,7 @@
 require 'db.php';
 $sqlsrv = new Sqlsrv();
 /*$data = array(
-    "keyword" => 'ace'
+    "keyword" => 'anestil'
 );*/
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -10,7 +10,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 if($data['keyword'] != '')
 {
     
-   $query = $sqlsrv->fetchArray("SELECT * FROM UMK_STORE_MASTER T0 WHERE T0.DESCRIPCION like '%".$data['keyword']."%'  AND T0.STOCK >= 1 AND T0.PRECIO > 0 ", SQLSRV_FETCH_ASSOC);
+   $query = $sqlsrv->fetchArray("SELECT * FROM UMK_STORE_MASTER T0 WHERE T0.DESCRIPCION like '%".$data['keyword']."%'  AND T0.STOCK > 30", SQLSRV_FETCH_ASSOC);
     
    if(count($query) != 0){
    
@@ -46,17 +46,18 @@ if($data['keyword'] != '')
             for($i=0;$i<count($a);$i++){
                 $k[$i] = array("product_type"=>$a[$i],"product_price"=> str_replace(',', '', number_format($ab[$i],2))   );
             }   
-           $result['price'] = $k;
+            $result['price'] = $k;
             $result['stock'] = str_replace(',', '', number_format($fila['STOCK'],0));
             $result['discount'] = $set_desc;
             $result['mIva'] = number_format($fila['IMPUESTO'],0);
             $result['bonificado'] = $fila['REGLAS'];
+            $result['Categoria'] = ($fila['ID_CLAS_2']=="88") ? $fila['ID_CLAS_2'] : $fila['ID_CLAS_3'];
             $pp[] = $result;
         }
-        $returnArr = array("data"=>$pp,"ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Product List Get successfully!");       
+        $returnArr = array("data"=>$pp,"ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Correcto");
     }
     else{
-        $returnArr = array("ResponseCode"=>"401","Result"=>"false","ResponseMsg"=>"Product List Not Found!");
+        $returnArr = array("ResponseCode"=>"401","Result"=>"false","ResponseMsg"=>"Lista de productos no encontrada!");
     }
     echo json_encode($returnArr);
 }else{

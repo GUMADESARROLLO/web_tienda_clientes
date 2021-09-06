@@ -13,7 +13,7 @@ if($data['cid'] != '' or $data['sid'] != '')
     $sid = $data['cid'];
     $cid = $data['sid'];
 
-    $query = $sqlsrv->fetchArray("SELECT * FROM UMK_STORE_MASTER T0 WHERE T0.ID_CLAS_1 ='".$cid."' AND T0.ID_CLAS_3='".$sid."'  AND T0.STOCK > 0 AND T0.PRECIO > 0 ", SQLSRV_FETCH_ASSOC);
+    $query = $sqlsrv->fetchArray("SELECT * FROM UMK_STORE_MASTER T0 WHERE T0.ID_CLAS_1 ='".$cid."' AND T0.ID_CLAS_3='".$sid."'  AND T0.STOCK > 30 AND T0.PRECIO > 0 ", SQLSRV_FETCH_ASSOC);
     if(count($query) != 0){
         foreach ($query as $fila) {
 
@@ -52,6 +52,7 @@ if($data['cid'] != '' or $data['sid'] != '')
             $result['discount'] = $set_desc;
             $result['mIva'] = number_format($fila['IMPUESTO'],0);
             $result['bonificado'] = $fila['REGLAS'];
+            $result['Categoria'] = ($fila['ID_CLAS_2']=="88") ? $fila['ID_CLAS_2'] : $fila['ID_CLAS_3'];
             $pp[] = $result;
         }
        $returnArr = array("data"=>$pp,"ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Product List Get successfully!");

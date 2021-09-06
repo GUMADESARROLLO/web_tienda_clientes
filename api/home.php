@@ -1,4 +1,6 @@
 <?php
+
+
 $imagenes_categoria = array(
     array(
         "category_id" => 4,
@@ -23,6 +25,7 @@ $imagenes_categoria = array(
 
 );
 require 'db.php';
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 $uid = $data['uid'];
@@ -30,6 +33,19 @@ $uid = $data['uid'];
 if($uid == ''){
 	$returnArr = array("ResponseCode"=>"401","Result"=>"false","ResponseMsg"=>"Something Went wrong  try again !");
 }else { 
+    $Info_Cliente = array();
+    
+    $query = "SELECT cod_client,pdc FROM user WHERE id='".$uid."'";
+    $resouter = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_row($resouter)) {
+        $Info_Cliente[] = $row;
+    }
+
+    $get_cod_cliente = $Info_Cliente[0][0];
+    $get_Pro_crecime = $Info_Cliente[0][1];
+    
+    
+
 	$v = array();
 	$cp = array(); 
 	$d = array();
@@ -42,7 +58,8 @@ while($row = $sel->fetch_assoc()){
     $v[] = $row;
 }
 
-$query = $sqlsrv->fetchArray("SELECT T0.ID_CLAS_1,T0.Clasificacion_1, COUNT(T0.ID_CLAS_1) AS CNT FROM UMK_STORE_MASTER T0 WHERE T0.ID_CLAS_1 NOT IN (7) AND STOCK > 0 GROUP BY T0.ID_CLAS_1,T0.Clasificacion_1 ", SQLSRV_FETCH_ASSOC);
+
+$query = $sqlsrv->fetchArray("SELECT T0.ID_CLAS_1,T0.Clasificacion_1, COUNT(T0.ID_CLAS_1) AS CNT FROM UMK_STORE_MASTER T0 WHERE T0.ID_CLAS_1 NOT IN (7) AND STOCK > 30 GROUP BY T0.ID_CLAS_1,T0.Clasificacion_1 ", SQLSRV_FETCH_ASSOC);
 foreach ($query as $fila) {
         $found_key = array_search($fila['ID_CLAS_1'], array_column($imagenes_categoria, 'category_id'));
         $p['id'] = "00".$fila['ID_CLAS_1'];
@@ -74,6 +91,8 @@ $prod = $con->query("select * from product where status=1 and popular = 1 order 
 
             }
 
+            
+
             $result['id'] = $fila['ARTICULO'];
             $result['product_name'] = strtoupper($fila['DESCRIPCION']);
             $result['product_image'] = $set_img;
@@ -86,17 +105,21 @@ $prod = $con->query("select * from product where status=1 and popular = 1 order 
             for($i=0;$i<count($a);$i++){
                 $k[$i] = array("product_type"=>$a[$i],"product_price"=> str_replace(',', '', number_format($ab[$i],2,".",","))   );
             }   
-           $result['price'] = $k;
+            $result['price'] = $k;
             $result['stock'] = str_replace(',', '', number_format($fila['STOCK'],0));
             $result['discount'] = $set_desc;
             $result['mIva'] = number_format($fila['IMPUESTO'],0);
-            $result['bonificado'] = $fila['REGLAS'];
+            $result['bonificado'] = $fila['REGLAS'];            
+            $result['Categoria'] = ($fila['ID_CLAS_2']=="88") ? $fila['ID_CLAS_2'] : $fila['ID_CLAS_3'];
             $d[] = $result;
         }
 
 
 
 	}
+
+
+    
 	
 
 $slist = $con->query("select * from home where status = 1")->num_rows;
@@ -111,8 +134,10 @@ if($slist !=0)
         $sep = array();
         $sid = $rp['sid'];
         $cid = $rp['cid'];
-        $rpq = $sqlsrv->fetchArray("SELECT * FROM UMK_STORE_MASTER T0 WHERE T0.ID_CLAS_1 ='".$cid."' AND T0.ID_CLAS_3='".$sid."'  AND STOCK > 0 ", SQLSRV_FETCH_ASSOC);
-      
+
+        
+        $rpq = $sqlsrv->fetchArray("SELECT * FROM APP_CLIENTES_GMV_HISTORICO_COMRAS WHERE Cliente='".$get_cod_cliente."' ORDER BY Dia", SQLSRV_FETCH_ASSOC);
+
     
         foreach ($rpq as $fila) {
             $set_img ="http://186.1.15.167:8448/tnd/product/ND.png";
@@ -149,7 +174,8 @@ if($slist !=0)
             $section['stock'] = str_replace(',', '', number_format($fila['STOCK'],0));
             $section['discount'] = $set_desc;
             $section['mIva'] = number_format($fila['IMPUESTO'],0);
-            $section['bonificado'] = $fila['REGLAS'];
+            $section['bonificado'] = $fila['REGLAS'];            
+            $section['Categoria'] = ($fila['ID_CLAS_2']=="88") ? $fila['ID_CLAS_2'] : $fila['ID_CLAS_3'];
         $sep[] = $section;
         }
         $sev['title'] = $rp['title'];
@@ -171,7 +197,16 @@ if($slist !=0)
 	$read = $con->query("select * from uread where uid=".$uid."")->num_rows;
 	$r_noti = $remain - $read;
 	$curr = $con->query("select * from setting")->fetch_assoc();
-	$kp = array('Banner'=>$v,'Catlist'=>$cp,'Productlist'=>$d,"Remain_notification"=>$r_noti,"Main_Data"=>$curr,"dynamic_section"=>$sec);
+
+	$kp = array(
+        'Banner'=>$v,
+        'Catlist'=>$cp,
+        'Productlist'=>$d,
+        "Remain_notification"=>$r_noti,
+        "Main_Data"=>$curr,
+        "dynamic_section"=>$sec,
+        "programa_creci" => $get_Pro_crecime
+    );
 	
 	$returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Data Get Successfully!","ResultData"=>$kp);
     echo json_encode($returnArr);

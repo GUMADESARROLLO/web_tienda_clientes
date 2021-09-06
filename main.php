@@ -30,13 +30,11 @@ else
               <li><a href="dashboard.php"><i class="ft-airplay"></i><span data-i18n="" class="menu-title">Escritorio</span></a></li>
               <li><a href="productlist.php" ><i class="ft-package"></i><span data-i18n="" class="menu-title">Productos</span></a></li>
                 <li><a href="sendnotifi.php" ><i class="ft-package"></i><span data-i18n="" class="menu-title">Notificaciones</span></a></li>
-     
         <li class="has-sub nav-item" ><a href="#"><i class="ft-shopping-cart"></i><span data-i18n="" class="menu-title">Ordenes</span></a>
                 <ul class="menu-content">
                   <li><a href="order.php" class="menu-item">Pendiente</a></li>
                   <li><a href="orders.php" class="menu-item">Completada</a>
                   </li>
-                 
                     </ul>
                   
                 
@@ -49,15 +47,12 @@ else
               
 
         
-        
-             
-               <li class="has-sub nav-item" style="display:none"><a href="#"><i class="ft-compass"></i><span data-i18n="" class="menu-title">Area</span></a>
+        <li class="has-sub nav-item" style="display:none"><a href="#"><i class="ft-compass"></i><span data-i18n="" class="menu-title">Area</span></a>
                 <ul class="menu-content">
                   <li><a href="area.php" class="menu-item">Add Area</a>
                   </li>
                   <li><a href="alist.php" class="menu-item">Area List</a>
                   </li>
-                 
                     </ul>
                   
                 
@@ -70,59 +65,46 @@ else
                   </li>
                   <li><a href="tlist.php" class="menu-item">Timesloat List</a>
                   </li>
-                 
                     </ul>
                   
                 
               </li>
               
         
-               
-			  
-			  
-			  
-			 
   
- 
               
-              <li><a href="home_section_list.php" style="display: none"><i class="ft-image"></i><span data-i18n="" class="menu-title">Secciones</span></a></li>
-             
+              <li><a href="home_section_list.php" ><i class="ft-image"></i><span data-i18n="" class="menu-title">Secciones</span></a></li>
               
               
-             
-       
         
-         <li class="has-sub nav-item" style="display:none"><a href="#"><i class="ft-bell"></i><span data-i18n="" class="menu-title">Notification</span></a>
+      <li class="has-sub nav-item" style="display:none"><a href="#"><i class="ft-bell"></i><span data-i18n="" class="menu-title">Notification</span></a>
                 <ul class="menu-content">
                   <li><a href="template.php" class="menu-item">Add Notification</a>
                   </li>
                   <li><a href="templatelist.php" class="menu-item">Notification List</a>
                   </li>
-                 
                     </ul>
                   
                 
               </li>
-         
-        <li><a href="user.php"><i class="ft-users"></i><span data-i18n="" class="menu-title">Cliente</span></a>
+        <li style="display: none"><a href="user.php"><i class="ft-users"></i><span data-i18n="" class="menu-title">Cliente</span></a>
         <li><a href="orderrate.php" style="display:none"><i class="ft-flag"></i><span data-i18n="" class="menu-title">Customer Rating</span></a>
               <li><a href="feed.php" style="display:none"><i class="ft-star"></i><span data-i18n="" class="menu-title">Feedback</span></a>
               </li>
-               <li class="has-sub nav-item" style="display:none"><a href="#"><i class="fa fa-flag"></i><span data-i18n="" class="menu-title">Country Code</span></a>
+                <li class="has-sub nav-item" style="display:none"><a href="#"><i class="fa fa-flag"></i><span data-i18n="" class="menu-title">Country Code</span></a>
                 <ul class="menu-content">
                   <li><a href="code.php" class="menu-item active">Add Country Code</a>
                   </li>
                   <li><a href="clist.php" class="menu-item">Country Code List</a>
                   </li>
-                 
                     </ul>
                   
                 
               </li>
               
-			   <li style="display: none"><a href="payment_list.php" ><i class="fa fa-money"></i><span data-i18n="" class="menu-title">Metodos de pago</span></a>
-			  <li><a href="profile.php"><i class="ft-user"></i><span data-i18n="" class="menu-title">Perfil</span></a></li>
-        <li><a href="setting.php"><i class="ft-settings"></i><span data-i18n="" class="menu-title">Ajustes</span></a>
+        <li style="display: none"><a href="payment_list.php" ><i class="fa fa-money"></i><span data-i18n="" class="menu-title">Metodos de pago</span></a>
+        <li><a href="profile.php"><i class="ft-user"></i><span data-i18n="" class="menu-title">Perfil</span></a></li>
+        <li style="display: none"><a href="setting.php"><i class="ft-settings"></i><span data-i18n="" class="menu-title">Ajustes</span></a>
               </li>
             </ul>
           </div>
@@ -151,7 +133,6 @@ else
                 <li class="nav-item mr-2 d-none d-lg-block"><a id="navbar-fullscreen" href="javascript:;" class="nav-link apptogglefullscreen"><i class="ft-maximize font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">fullscreen</p></a></li>
 
-               
                 <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">User Settings</p></a>
                   <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right"><a href="logout.php" class="dropdown-item"><i class="ft-power mr-2"></i><span>Salir</span></a>

@@ -31,38 +31,27 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
-								 <th>No.</th>
 								  <th>Nombre</th>
-                                    <th>No. Casa</th>
-                                     <th>Society</th>
-									 <th>Area</th>
-									 <th>Pincode</th>
-									  <th>Landmark</th>
-									 
-									  <th>Type</th>
-                                    
-
+                                    <th>Direccion</th>
+									<th>Area</th>
+									<th>Referencia</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
                                 $sel = $con->query("select * from address where uid=".$_GET['uid']."");
-                                $i=0;
+
                                 while($row = $sel->fetch_assoc())
                                 {
-                                    $i= $i + 1;
+
                                 ?>
                                 <tr>
-                                    
-                                    <td><?php echo $i; ?></td>
-									<td><?php echo $row['name'];?></td>
-                                    <td><?php echo $row['hno'];?></td>
-                                     <td><?php echo $row['society'];?></td>
-									 <td><?php echo $row['area'];?></td>
-									 <td><?php echo $row['pincode'];?></td>
-									 <td><?php echo $row['landmark'];?></td>
-									
-									 <td><?php echo $row['type'];?></td>
+
+									<td><?php echo $row['Titulo'];?></td>
+                                    <td><?php echo $row['Direec'];?></td>
+                                     <td><?php echo $row['area'];?></td>
+									 <td><?php echo $row['Referecia'];?></td>
+									 
                                   
                                    
                                 </tr>

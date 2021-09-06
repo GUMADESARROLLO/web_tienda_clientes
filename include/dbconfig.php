@@ -7,7 +7,7 @@ try {
   $con = new mysqli("localhost", "root", "a7m1425.", "grocery_14");
   $con->set_charset("utf8mb4");
 
-  $connect = new mysqli("192.168.2.4", "Dios", "a7m1425.", "ecommerce_android_app");
+  $connect = new mysqli("192.168.1.15", "Dios", "a7m1425.", "ecommerce_android_app");
   $connect->set_charset("utf8mb4");
 
 

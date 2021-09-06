@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7f611301-32dc-464e-89e1-cffdd83cd9bf" name="1.11" url="http://192.168.1.11">
+        <fileTransfer host="192.168.1.11" port="21" rootFolder="/www/tnd">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

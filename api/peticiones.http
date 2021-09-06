@@ -1,0 +1,65 @@
+POST http://192.168.1.139:8448/tnd/api/home.php
+content-type: application/json
+
+{
+    "uid": "118"
+}
+###
+
+POST http://192.168.1.139:8448/tnd/api/validar_cupones.php
+content-type: application/json
+
+{
+    "cod_cupones" : "1308",
+    "cod_cliente" : "03140"
+}
+
+
+###
+POST http://192.168.1.139:8448/tnd/api/subcategory.php
+content-type: application/json
+
+{
+    "category_id" : "1"    
+}
+
+###
+POST http://192.168.1.139:8448/tnd/api/login.php
+content-type: application/json
+
+###
+POST http://192.168.1.139:8448/tnd/api/plist.php
+content-type: application/json
+
+{
+    "id": "00000187",
+    "uid": "2152"
+}
+
+###
+POST http://192.168.1.139:8448/tnd/api/perfil_upc.php
+content-type: application/json
+
+{
+    "uid": "03001"
+}
+
+###
+POST http://192.168.1.139:8448/tnd/api/subcategory.php
+content-type: application/json
+
+{
+    "category_id": "005"
+}
+###
+POST http://192.168.1.139:8448/tnd/api/product.php
+content-type: application/json
+
+{
+    "cid": "005",
+    "sid": "1"
+}
+
+
+
+

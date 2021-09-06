@@ -4,6 +4,9 @@ require 'db.php';
     "id" => '29',
     "uid" => '130',
 );*/
+
+
+
 $data = json_decode(file_get_contents('php://input'), true);
 $var_address_text = "";
 
@@ -23,7 +26,11 @@ if($data['uid'] == ''){
       $Id = substr("00000000", strlen($row['id'])).$row['id'];
     $oid = $row['oid'];
       $var_address_text = $row['address_txt'];
+
     $order_comentario = $row['Comentario'];
+
+    $order_comentario .= ($row['timesloat']=="") ? "" : " [ CUPON: #" .$row['timesloat'] . " ]";
+
     $id = $Id;
     $a = explode('$;',$row['pname']);    
     $p = explode('$;',$row['pprice']);
@@ -66,18 +73,36 @@ if($data['uid'] == ''){
     }else {
       $status =$row['status'];
     }
-	  $p_method = $row['p_method'];
+
+
+
+    $p_method = str_replace(array("C$", ","), "", $row['p_method']);
     $total =$row['total'] ;
     $odate = $row['ddate'];
     $timesloat = $row['timesloat'];
- 	  $tax = $row['tax'];
-	  $address_id = $row['address_id'];
-	  $rid = $row['rid'];
+    $tax = $row['tax'];
+    $address_id = $row['address_id'];
+    $rid = $row['rid'];
+
+    $px = $row['porcent_cupon'];
+
+    //$Descuento = (float) substr($row['p_method'],3);
+
+    $String = array("C$", ",");
+
+    $Descuento = str_replace($String, "", $row['p_method']);
+
+
+
     //$result['total'] = $row['total'];
     //$result['status'] = $row['status'];
     //$result['order_date'] = $row['order_date'];
     //$result['timesloat'] = $row['timesloat'];
     //$pp[] = $result;
+
+    
+
+     
     }
    
     $orate = $con->query("select * from rate_order where oid='".$id."'");
@@ -98,11 +123,28 @@ if($data['uid'] == ''){
       $dc = $con->query("select * from area_db where name='".$c['area']."'");
       $dc = $dc->fetch_assoc();
 			
-			if($p_method == 'Pickup Myself'){
-			 $px = 0;
-			}else {				
-			 $px = $dc['dcharge'];
-			}
-      $returnArr = array("productinfo"=>$k,"Sub_total"=>array_sum($ksub),"orderid"=>$id,"Comment"=>$order_comentario,"address"=>$address_cust,"address_type"=>$atype,"customer_name"=>$cname,"total_amt"=>$total,"rider_mobile"=>$rider['mobile'],"rider_name"=>$rider['name'],"p_method"=>$p_method,"status"=>$status,"order_date"=>$odate,"timesloat"=>$timesloat,"Israted"=>$rate,"d_charge"=>$px,"tax"=>$tax,"ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"éxito!");
+			
+      $returnArr = array(
+        "productinfo"=>$k,
+        "Sub_total"=>array_sum($ksub),
+        "orderid"=>$id,
+        "Comment"=>$order_comentario,
+        "address"=>$address_cust,
+        "address_type"=>$atype,
+        "customer_name"=>$cname,
+        "total_amt"=>$total - $Descuento,
+        "rider_mobile"=>$rider['mobile'],
+        "rider_name"=>$rider['name'],
+        "p_method"=>$p_method,
+        "status"=>$status,
+        "order_date"=>$odate,
+        "timesloat"=>$timesloat,
+        "Israted"=>$rate,
+        "d_charge"=>$px,
+        "tax"=>$tax,
+        "ResponseCode"=>"200",
+        "Result"=>"true",
+        "ResponseMsg"=>"éxito!"
+      );
 }
 echo json_encode($returnArr);

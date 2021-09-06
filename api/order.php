@@ -4,13 +4,21 @@
     if($data['uid'] == '') {
         $returnArr = array("ResponseCode"=>"401","Result"=>"false","ResponseMsg"=>"Something Went Wrong!");
     }else{
+
+        $info_user      = $con->query("select * from user where id=".$data['uid']."")->fetch_assoc();
+        $cod_cliente    = $info_user['cod_client'];
+        $Fecha_cupon = date('y-m-d h:i:s');
+
         $uid =  $data['uid'];
         $ddate = $data['ddate'];
         /*$a = explode('-',$ddate);
         $ddate = $a[2].'-'.$a[1].'-'.$a[0];*/
-        $timesloat = $data['timesloat'];
+        $timesloat = strtoupper($data['timesloat']);
         $oid ='#'.uniqid();
         $pname = $data['pname'];
+
+        $porcent_cupon = $data['porcent_cupon'];
+        
         $status = 'pendiente';
         $Comment = $data['comment'];
         $txt_Address = $data['address_txt'];
@@ -42,8 +50,16 @@
         $qty = implode('$;',$q);
         $b = implode('$;',$bo);
 
-        $con->query("insert into orders(`oid`,`uid`,`pname`,`pid`,`ptype`,`pprice`,`ddate`,`timesloat`,`order_date`,`status`,`qty`,`boni`,`total`,`p_method`,`address_id`,`tax`,`tid`,`player_id`,`Comentario`,`address_txt`)values('".$oid."',".$uid.",'".$pname."','".$pid."','".$ptype."','".$pprice."','".$ddate."','".$timesloat."','".$timestamp."','".$status."','".$qty."','".$b."',".$total.",'".$p_method."',".$address_id.",".$tax.",'".$tid."','".$player_id."','".$Comment."','".$txt_Address."')");
-$returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Pedido realizado correctamente.");
+        $con->query("INSERT INTO orders(`porcent_cupon`,`oid`,`uid`,`pname`,`pid`,`ptype`,`pprice`,`ddate`,`timesloat`,`order_date`,`status`,`qty`,`boni`,`total`,`p_method`,`address_id`,`tax`,`tid`,`player_id`,`Comentario`,`address_txt`)VALUES('".$porcent_cupon."','".$oid."',".$uid.",'".$pname."','".$pid."','".$ptype."','".$pprice."','".$ddate."','".$timesloat."','".$timestamp."','".$status."','".$qty."','".$b."',".$total.",'".$p_method."',".$address_id.",".$tax.",'".$tid."','".$player_id."','".$Comment."','".$txt_Address."')");
+
+        if($timesloat!=' '){
+            $con->query("INSERT INTO tbl_cupones_aplicados(`cod_cupones`,`Fecha`,`cod_cliente`)values('".$timesloat."','".$Fecha_cupon."','".$cod_cliente."')");
+        }
+        
+
+        $returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"Pedido realizado correctamente.");
+
+        
 }
 
 echo json_encode($returnArr);
