@@ -6,7 +6,7 @@ try {
   //Username, Password and Database
 
   //PRODUCCION
-  $DataBase = "grocery_14";
+  //$DataBase = "grocery_14";
   
   //DEMO
   $DataBase = "tienda_umk";
