@@ -137,10 +137,9 @@ if($uid == ''){
 
     $Monto_Optimo = $get_meta_cliente * $Mes_actual;
 
-    //$Pocentaje_cumplimiento  = number_format((($Venta_Anual / $Monto_Optimo )  - 1 ) * 100);
+    $Pocentaje_cumplimiento  = number_format((($Venta_Anual / $Monto_Optimo )  - 1 ) * 100);
     //$Pocentaje_cumplimiento  = number_format(((($get_meta_cliente * 12 ) / $Venta_Anual )  - 1 ) * 100);
-
-    $Pocentaje_cumplimiento  = number_format( ($Venta_Anual * 100) / ($get_meta_cliente * 12) );
+    //$Pocentaje_cumplimiento  = number_format( ($Venta_Anual * 100) / ($get_meta_cliente * 12) );
     
 	$returnArr = array(
         "ResponseCode"  =>"200",
