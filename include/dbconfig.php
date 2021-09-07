@@ -4,7 +4,14 @@
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
   //Username, Password and Database
-  $con = new mysqli("localhost", "root", "a7m1425.", "grocery_14");
+
+  //PRODUCCION
+  $DataBase = "grocery_14";
+  
+  //DEMO
+  $DataBase = "tienda_umk";
+
+  $con = new mysqli("localhost", "root", "a7m1425.", $DataBase);
   $con->set_charset("utf8mb4");
 
   $connect = new mysqli("192.168.1.15", "Dios", "a7m1425.", "ecommerce_android_app");
