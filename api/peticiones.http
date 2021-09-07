@@ -1,3 +1,10 @@
+POST http://192.168.1.139:8448/tnd/api/history.php
+content-type: application/json
+
+{
+    "uid": "2117"
+}
+###
 POST http://192.168.1.139:8448/tnd/api/home.php
 content-type: application/json
 
@@ -6,12 +13,14 @@ content-type: application/json
 }
 ###
 
+
+
 POST http://192.168.1.139:8448/tnd/api/validar_cupones.php
 content-type: application/json
 
 {
-    "cod_cupones" : "1308",
-    "cod_cliente" : "03140"
+    "cod_cupones" : "12091209",
+    "cod_cliente" : "03001"
 }
 
 
